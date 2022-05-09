@@ -1,6 +1,31 @@
 const mongoose = require('mongoose');
 const Joi = require('joi');
 
+
+const studentSchema = mongoose.Schema({
+    name: {
+        type: String,
+        required: true,
+    },
+    id: {
+        type: mongoose.Schema.type.ObjectId,
+        ref: 'Student',
+        required: true,
+    }
+});
+
+const teacherSchema = mongoose.Schema({
+    name: {
+        type: String,
+        required: true,
+    },
+    id: {
+        type: mongoose.Schema.type.ObjectId,
+        ref: 'Teacher',
+        required: true,
+    }
+});
+
 const sectionSchema = mongoose.Schema({
     sectionName: {
         type: String,
@@ -9,12 +34,10 @@ const sectionSchema = mongoose.Schema({
         unique: true,
     },
     students: {
-        type: [ mongoose.Schema.type.ObjectId ],
-        ref: 'Student',
+        type: [ studentSchema ],
     },
     teachers: {
-        type: [mongoose.Schema.type.ObjectId], 
-        ref: 'Teacher'
+        type: [teacherSchema],
     },
 
 });
@@ -24,6 +47,8 @@ const Section = mongoose.model('Section', sectionSchema);
 function validateSection(section) {
     const schema = {
         sectionName: Joi.string().required().min(2),
+        students: Joi.array().items(Joi.ObjectId()),
+        teachers: Joi.array().items(Joi.ObjectId()),
     };
 
     return Joi.validate(section, schema);

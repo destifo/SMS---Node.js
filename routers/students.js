@@ -4,7 +4,7 @@ const router = Express.Router();
 const mongoose = require('mongoose');
 const { Student, validateStudent } = require('../models/Student');
 const { Section, validateSection } = require('../models/Section');
-const res = require('express/lib/response');
+
 
 async function registerStudent(student){
     const { error } = validateStudent(student);

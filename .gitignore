@@ -4114,3 +4114,10 @@ node_modules/yallist/LICENSE
 node_modules/yallist/package.json
 node_modules/yallist/README.md
 node_modules/yallist/yallist.js
+node_modules/joi-objectid/.travis.yml
+node_modules/joi-objectid/History.md
+node_modules/joi-objectid/index.js
+node_modules/joi-objectid/LICENSE
+node_modules/joi-objectid/package.json
+node_modules/joi-objectid/README.md
+node_modules/joi-objectid/test.js
